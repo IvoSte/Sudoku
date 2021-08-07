@@ -1,12 +1,17 @@
+from dataclasses import dataclass
+from typing import Optional
 
+@dataclass(frozen=True)
 class Field:
+    x: int
+    y: int
+    block: int
+    value: Optional[int]
+    # self.show = False
 
-    def __init__(self, x, y, block, value):
-        self.x = x
-        self.y = y
-        self.block = block
-        self.value = value
-        # self.show = False
-
-    def _print(self):
+    def __str__(self):
+        return str(self.value)
+    
+    def print_(self):
         print(f"{self.x} {self.y} {self.value}")
+
