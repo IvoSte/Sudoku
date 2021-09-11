@@ -10,6 +10,9 @@ class Grid:
                                             # And the amout of blocks per width/height. In traditional sudoku's, this is 3.
     fields: list[Field]
 
+    def get_field_at_x_y(self, x, y):
+        return [field for field in self.fields if field.x == x and field.y == y][0] #NOTE how can I do this better?
+
     def get_vertical(self, x):
         return [field for field in self.fields if field.x == x ]
 

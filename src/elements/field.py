@@ -9,7 +9,7 @@ class Field:
     value: Optional[int]
     # self.show = False
 
-    def __str__(self):
+    def __str__(self) -> str:
         return str(self.value)
     
     def print_(self):

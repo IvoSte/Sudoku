@@ -1,3 +1,5 @@
+from src.elements.grid import Grid
+from tests.elements.conftest import empty_grid
 from src.generator.generator import idx_to_x_y
 
 def test_idx_to_x_y():

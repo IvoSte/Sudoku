@@ -4,15 +4,15 @@ from .grid import Grid
 
 def coordinates_to_block(x: int, y: int, root_size: int):
     # Calculate blocks -- [root_size] amount per row and column. Start at 1. E.G. first row is 1, 2, 3. 
-    block_x = x/root_size
-    block_y = y/root_size
+    block_x = (x-1) // root_size + 1
+    block_y = (y-1) // root_size + 1
     block = ((block_y - 1) * root_size) + block_x
     return block
 
 
 class Puzzle:
     """Puzzle object ..."""
-    def __init__(self, name, root_size):
+    def __init__(self, name: str, root_size: int):
         self.name = name
         self.root_size = root_size
         self.grid = self.generate_grid(root_size)
@@ -20,7 +20,7 @@ class Puzzle:
     def generate(self):
         self.grid = generate_sudoku(self.grid)
 
-    def generate_grid(self, root_size):
+    def generate_grid(self, root_size: int):
         return Grid(
             root_size=root_size,
             fields=[
@@ -30,10 +30,6 @@ class Puzzle:
             ]
         )
         
-
-    def print_(self):
-        self.grid.print_()
-
 # generation strategies
     # fill in with random values, remove illegal, -- simulated annealing. Possible, horribly inefficient. 
     # Block by block. Random generation for one block, fit second, nescessary thrird. Kind of using solver.

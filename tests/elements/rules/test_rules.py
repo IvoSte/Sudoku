@@ -28,6 +28,10 @@ def grid_one_field(empty_grid: Grid) -> Grid:
 def test_horizontal_rule_one_field(grid_one_field: Grid):
     horizontal_rule(grid_one_field, Field(x=1, y=1, block=1, value=1)) == True
 
+def test_block_rule_two_fields(grid_one_field: Grid):
+    assert block_rule(grid_one_field, Field(x=2, y=2, block=1, value=1)) == False
+    assert block_rule(grid_one_field, Field(x=2, y=2, block=1, value=2)) == True
+    assert block_rule(grid_one_field, Field(x=4, y=2, block=2, value=1)) == True
 
 @pytest.fixture
 def grid_two_fields(empty_grid: Grid) -> Grid:
@@ -36,5 +40,5 @@ def grid_two_fields(empty_grid: Grid) -> Grid:
 
 
 def test_horizontal_rule_two_fields(grid_two_fields: Grid):
-    horizontal_rule(grid_two_fields, Field(x=2, y=1, block=1, value=1)) == False
-    horizontal_rule(grid_two_fields, Field(x=2, y=1, block=1, value=2)) == True
+    assert horizontal_rule(grid_two_fields, Field(x=2, y=1, block=1, value=1)) == False
+    assert horizontal_rule(grid_two_fields, Field(x=2, y=1, block=1, value=2)) == True
